@@ -75,8 +75,6 @@ def logmen():
     pilog()
 def pilog():
     og = raw_input("\nSelect: ")
-        if og =="0":
-        exit()
     if og =="1":
         os.system("clear")
         print ("AUTHER AND OWNER 👉👉Mr-Robot")
