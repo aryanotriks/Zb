@@ -128,7 +128,7 @@ def get(data):
 		print '[!] Connection error !!!'
 		os.remove('cookie/token.log')
 		menu()
-    os.system("clear")
+    os.system('clear')
     print logo
     print("Welcome "+name)
     print (" ")
