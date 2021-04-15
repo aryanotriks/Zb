@@ -156,7 +156,7 @@ def pil():
         
 def cramen():
 	global token
-	os.system("clear")
+	os.system('clear')
 	try:
 		token=open(".logfuck.txt","r").read()
 	except IOError:
