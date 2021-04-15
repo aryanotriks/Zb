@@ -75,7 +75,7 @@ def logmen():
     pilog()
 def pilog():
     og = raw_input("\nSelect: ")
-        elif og =="0":
+        if og =="0":
         exit()
     if og =="1":
         os.system("clear")
